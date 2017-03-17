@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ng2-bootstrap';
 import { AppComponent } from './app.component';
 import { ListProduitComponentsComponent } from './list-produit-components/list-produit-components.component';
+import { StarComponent } from './star/star.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListProduitComponentsComponent
+    ListProduitComponentsComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,

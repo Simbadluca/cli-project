@@ -1,0 +1,17 @@
+.star_item {
+float: left;
+height: 30px;
+width: 30px;
+text-align: center;
+margin-right: 1px;
+background-color: pink;
+cursor: pointer;
+}
+
+.star_item.active {
+background-color: red;
+}
+
+.star_wrappen {
+height: 30px;
+}

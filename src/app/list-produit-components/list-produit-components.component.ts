@@ -50,6 +50,8 @@ export class ListProduitComponentsComponent implements OnInit {
 
   }
 
+  whenClick(product: IProduct, newRating: number): void {}
+
   ngOnInit() {
   }
 

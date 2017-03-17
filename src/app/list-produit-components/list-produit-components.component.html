@@ -25,7 +25,10 @@
             </span>
             <button *ngIf='product.isVisible' type="button" (click)='MonOnClick(product)'>next</button>
           </td>
-          <td>{{product.note}}</td>
+          <!-- <td>{{product.note}}</td> -->
+          <td>
+            <app-star [rating]= 'product.note' (notify)='whenClick($event)'></app-star>
+          </td>
         </tr>
       </tbody>
     </table>
