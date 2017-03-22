@@ -1,5 +1,11 @@
-<div class="star_item" (click)="whenClick(1)">1</div>
-<div class="star_item" (click)="whenClick(2)">2</div>
-<div class="star_item" (click)="whenClick(3)">3</div>
-<div class="star_item" (click)="whenClick(4)">4</div>
-<div class="star_item" (click)="whenClick(5)">5</div>
+<div class="wrapper" [title]="rating"
+    [style.width.px]="starWidth"
+    (click)='onClick()'>
+    <div style="width: 86px">
+        <span *ngFor= "let i of [5,4,3,2,1]"
+          class="glyphicon glyphicon-star"
+          (click)="updateRating(i)"
+          [style.color]="i < getRoundedRating() ? '#DDD' : '#333'">
+        </span>
+    </div>
+</div>

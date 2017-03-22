@@ -15,3 +15,22 @@ background-color: red;
 .star_wrappen {
 height: 30px;
 }
+
+.crop {
+    overflow: hidden;
+}
+
+div {
+    cursor: pointer;
+}
+
+.glyphicon-star:hover:before,
+.glyphicon-star:hover ~.glyphicon-star:before {
+  cursor: pointer;
+  color: cyano;
+}
+
+.wrappen {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}

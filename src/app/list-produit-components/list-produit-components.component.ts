@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-interface IProduct {
-  id: number,
-  nom: string,
-  images: string[],
-  note: number,
-  isVisible: boolean,
-  currentimage: number
+export interface IProduct {
+  id: number;
+  nom: string;
+  images: string[];
+  note: number;
+  isVisible: boolean;
+  currentimage: number;
 }
 
 @Component({
@@ -18,41 +18,42 @@ interface IProduct {
 export class ListProduitComponentsComponent implements OnInit {
 
   pageTitle: string = 'Liste des produits';
+  listFilter: string;
 
-  products: IProduct[]=[];
-  constructor() {
-    this.products.push({
-      id: 1,
-      nom: 'Gufo',
-      images: ['hungover18.jpg', 'hungover10.jpg'],
-      note: 5,
-      isVisible: true,
-      currentimage: 0
-    });
+  products: IProduct[]=[
+    {
+      "id": 1,
+      "nom": "Gufo",
+      "images": ["hungover18.jpg", "hungover10.jpg"],
+      "note": 5,
+      "isVisible": true,
+      "currentimage": 0
+    },
+    {
+      "id": 2,
+      "nom": "Gatto",
+      "images": ["hungover2.jpg", "hungover18.jpg"],
+      "note": 4,
+      "isVisible": true,
+      "currentimage": 0
+    },
+    {
+      "id": 3,
+      "nom": "Orso",
+      "images": ["hungover1.jpg", "hungover12.jpg"],
+      "note": 3,
+      "isVisible": true,
+      "currentimage": 0
+    }
+  ];
 
-    this.products.push({
-      id: 2,
-      nom: 'Gatto',
-      images: ['hungover2.jpg', 'hungover18.jpg'],
-      note: 4,
-      isVisible: true,
-      currentimage: 0
-    });
-
-    this.products.push({
-      id: 3,
-      nom: 'Orso',
-      images: ['hungover1.jpg', 'hungover12.jpg'],
-      note: 5,
-      isVisible: true,
-      currentimage: 0
-    });
-
-  }
-
-  whenClick(product: IProduct, newRating: number): void {}
+  constructor() { }
 
   ngOnInit() {
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 
   MonOnClick(product: IProduct){
