@@ -11,6 +11,8 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 import { ListProduitComponentsComponent } from './list-produit-components/list-produit-components.component';
 import { StarComponent } from './star/star.component';
 import { ArrayFilterPipe } from './shared/pipes/array-filter.pipe';
+import { ProduitDetailComponent } from './list-produit-components/produit-detail.component';
+import { ProductService } from './shared/models/product.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ArrayFilterPipe } from './shared/pipes/array-filter.pipe';
     ListProduitComponentsComponent,
     StarComponent,
     HeaderComponent,
-    ArrayFilterPipe
+    ArrayFilterPipe,
+    ProduitDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ import { ArrayFilterPipe } from './shared/pipes/array-filter.pipe';
     HttpModule,
     AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

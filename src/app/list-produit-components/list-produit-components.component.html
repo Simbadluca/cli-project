@@ -36,12 +36,16 @@
           <tbody>
             <tr *ngFor='let product of products | arrayFilter:listFilter'>
               <td>{{product.id}}</td>
-              <td>{{product.nom}}</td>
+              <td><a href="javascript:;">{{product.nom}}</a></td>
               <td>
                 <button class="btn btn-primary" (click)='toggleImage(product)'>{{product.isVisible ? ' Hide ' : ' Show '}}</button>
-                <span *ngIf='product.isVisible'>
-                  {{product.images[product.currentimage]}}
-                </span>
+
+                  <img *ngIf="product.isVisible"
+                       [src]="product.images[product.currentimage]"
+                       [title]="product.nom"
+                       [style.width.px]="imageWidth"
+                       [style.margin.px]="imageMargin">
+
                 <button *ngIf='product.isVisible' class="btn btn-primary" (click)='MonOnClick(product)'>next</button>
               </td>
               <!-- <td>{{product.note}}</td> -->

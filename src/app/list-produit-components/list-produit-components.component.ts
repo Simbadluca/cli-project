@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface IProduct {
-  id: number;
-  nom: string;
-  images: string[];
-  note: number;
-  isVisible: boolean;
-  currentimage: number;
-}
+import { IProduct, ProductService } from '../shared/models/product.service';
 
 @Component({
   selector: 'app-list-produit-components',
@@ -19,37 +11,15 @@ export class ListProduitComponentsComponent implements OnInit {
 
   pageTitle: string = 'Liste des produits';
   listFilter: string;
+  imageWidth: number = 200;
+  imageMargin: number = 5;
 
-  products: IProduct[]=[
-    {
-      "id": 1,
-      "nom": "Gufo",
-      "images": ["hungover18.jpg", "hungover10.jpg"],
-      "note": 5,
-      "isVisible": true,
-      "currentimage": 0
-    },
-    {
-      "id": 2,
-      "nom": "Gatto",
-      "images": ["hungover2.jpg", "hungover18.jpg"],
-      "note": 4,
-      "isVisible": true,
-      "currentimage": 0
-    },
-    {
-      "id": 3,
-      "nom": "Orso",
-      "images": ["hungover1.jpg", "hungover12.jpg"],
-      "note": 3,
-      "isVisible": true,
-      "currentimage": 0
-    }
-  ];
+  products: IProduct[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.products = this.productService.getProducts();
   }
 
   onRatingClicked(message: string): void {
