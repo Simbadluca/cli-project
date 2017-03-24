@@ -5,6 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/observable/from';
 
 
 export interface IProduct {
@@ -21,40 +25,7 @@ export class ProductService {
 
   static BASE_URL = 'http://localhost:3000/products';
 
-  products: IProduct[]=[
-    {
-      "id": 1,
-      "nom": "Tarot",
-      "images": ["./src/app/Images/tarot317.jpg", "./src/app/Images/tarot318.jpg"],
-      "note": 5,
-      "isVisible": true,
-      "currentimage": 0
-    },
-    {
-      "id": 2,
-      "nom": "T-REX",
-      "images": ["./src/app/Images/trex01.jpg", "./src/app/Images/trex02.jpg"],
-      "note": 4,
-      "isVisible": true,
-      "currentimage": 0
-    },
-    {
-      "id": 3,
-      "nom": "Protos",
-      "images": ["./src/app/Images/Protos.jpg", "./src/app/Images/Protos2.jpg"],
-      "note": 3,
-      "isVisible": true,
-      "currentimage": 0
-    },
-    {
-      "id": 4,
-      "nom": "MiniTitan",
-      "images": ["./src/app/Images/mtitan1.jpg", "./src/app/Images/mtitan2.jpg"],
-      "note": 3,
-      "isVisible": true,
-      "currentimage": 0
-    }
-  ];
+  products: IProduct[] = [];
 
   constructor(private _http: Http) { }
 
@@ -68,10 +39,19 @@ export class ProductService {
       });
   }
 
-  getObservableProducts(): Observable<IProduct[]> {
-    return new Observable(observer => {
-      observer.next(this.products);
-    });
+  getProductById(id: number): Observable<IProduct> {
+    return this.getProducts()                           // Retrieve the products collection (eg: [x,y,z])
+      .map(products => {
+        const foundProduct = products.find(product => product.id === id);
+        if (!foundProduct) {
+          throw new Error(`Product(${id}) not found!`);
+        }
+        return foundProduct;
+      })
+      .catch(error => {
+        console.error(error.message);
+        return Observable.throw(error.message);
+      });
   }
 
 }

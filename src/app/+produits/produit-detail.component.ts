@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/mergeMap';
+
+import { IProduct, ProductService } from '../shared/models/product.service';
 
 @Component({
   selector: 'app-produit-detail',
@@ -8,14 +13,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProduitDetailComponent implements OnInit {
 
-  myProductId: number = 0;
+  $product: Subscription;
+  product: IProduct;
 
-  constructor(private _route: ActivatedRoute) { }
+  pageTitle: string = 'Product Detail';
+
+  constructor(private _route: ActivatedRoute, private _productService: ProductService) {}
 
   ngOnInit() {
-    this._route.params.subscribe(
-      params => this.myProductId = parseInt(params['id'])
-    )
+    this.$product = this._route.params
+      .flatMap(params => this._productService.getProductById(parseInt(params['id'])))
+      .subscribe(
+        product => this.product = product,
+        err => console.error(err)
+      );
+  }
+
+  ngOnDestroy() {
+    this.$product.unsubscribe();
   }
 
 }

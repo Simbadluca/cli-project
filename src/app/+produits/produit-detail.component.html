@@ -1,5 +1,47 @@
-<p>
-  {{ myProductId }}
-</p>
+<div class="panel panel-primary" *ngIf="product">
+    <div class="panel-heading" style="font-size:large">
+        {{pageTitle + ": " + product.nom}}
+    </div>
 
-<a [routerLink]="['/produit', myProductId+1]">Next model</a>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Nom:</div>
+                    <div class="col-md-6">{{product.nom}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Code:</div>
+                    <div class="col-md-6">{{product.productCode}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">5 Star Rating:</div>
+                    <div class="col-md-6">
+                        <app-star [rating]="product.note">
+                        </app-star>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <img class="center-block img-responsive"
+                     [style.width.px]="200"
+                     [style.margin.px]="2"
+                     [src]="product.images[0]"
+                     [title]="product.nom">
+
+                <img class="center-block img-responsive"
+                     [style.width.px]="200"
+                     [style.margin.px]="2"
+                     [src]="product.images[1]"
+                     [title]="product.nom">
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <a class="btn btn-default" (click)="onBack()" style="width:80px">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+    </div>
+</div>

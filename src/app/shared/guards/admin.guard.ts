@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { IProduct } from '../../shared/models/product.service';
-
+// import { IProduct } from '../../shared/models/product.service';
+import { IProduct } from '../../+produits/produit-list.component';
 
 @Injectable()
 export class AdminGuard implements CanActivate, Resolve<IProduct> {
