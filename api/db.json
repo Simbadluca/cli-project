@@ -1,29 +1,34 @@
 {
   "products": [
     {
-
       "id": 1,
-      "nom": "Gufo",
-      "images": ["hungover18.jpg", "hungover10.jpg"],
+      "nom": "Tarot",
+      "images": ["./src/app/Images/tarot317.jpg", "./src/app/Images/tarot318.jpg"],
       "note": 5,
       "isVisible": true,
       "currentimage": 0
     },
-
     {
       "id": 2,
-      "nom": "Gatto",
-      "images": ["hungover2.jpg", "hungover18.jpg"],
+      "nom": "T-REX",
+      "images": ["./src/app/Images/trex01.jpg", "./src/app/Images/trex02.jpg"],
       "note": 4,
       "isVisible": true,
       "currentimage": 0
     },
-
     {
       "id": 3,
-      "nom": "Orso",
-      "images": ["hungover1.jpg", "hungover12.jpg"],
-      "note": 5,
+      "nom": "Protos",
+      "images": ["./src/app/Images/Protos.jpg", "./src/app/Images/Protos2.jpg"],
+      "note": 3,
+      "isVisible": true,
+      "currentimage": 0
+    },
+    {
+      "id": 4,
+      "nom": "MiniTitan",
+      "images": ["./src/app/Images/mtitan1.jpg", "./src/app/Images/mtitan2.jpg"],
+      "note": 3,
       "isVisible": true,
       "currentimage": 0
     }

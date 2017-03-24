@@ -2,16 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct, ProductService } from '../shared/models/product.service';
 
 @Component({
-  selector: 'app-list-produit-components',
-  templateUrl: './list-produit-components.component.html',
-  styleUrls: ['./list-produit-components.component.css']
+  selector: 'app-produit-list',
+  templateUrl: './produit-list.component.html',
+  styleUrls: ['./produit-list.component.css']
 })
-
-export class ListProduitComponentsComponent implements OnInit {
+export class ProduitListComponent implements OnInit {
 
   pageTitle: string = 'Liste des produits';
   listFilter: string;
-  imageWidth: number = 200;
+  imageWidth: number = 250;
   imageMargin: number = 5;
 
   products: IProduct[] = [];
@@ -19,7 +18,11 @@ export class ListProduitComponentsComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts()
+    .subscribe(
+      products => this.products = products,
+      err => console.log('An error occured', err)
+    );
   }
 
   onRatingClicked(message: string): void {
